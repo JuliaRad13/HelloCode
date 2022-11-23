@@ -1,4 +1,4 @@
-﻿// Вид 1
+﻿// Вид 1 // Ничего не принимают, ничего не возвращают
 /*
 void Method1()// Аргумент который ни чего не возвращает
 {
@@ -7,7 +7,7 @@ void Method1()// Аргумент который ни чего не возвра
 Method1();
 */
 
-// Вид 2
+// Вид 2 //Принимают, но не возвращают
 /*
 void Method2(string msg)// с аргументом
 {
@@ -83,6 +83,8 @@ for (int i = 2; i <= 10; i++)
 }
 */
 
+
+/*
 //    Работа с текстом
 // Дан текст. В тексте нужно все пробелы заменить черточками,
 // маленькие буквы "к" заменить большими "К",
@@ -102,8 +104,56 @@ string text = "- Я думаю, - сказал князь, улыбаясь, - �
 
 string Replase(string text, char oldValue, char newValue)
 {
-    string result=String.Empty// пустая строка
-    retu
+    string result = String.Empty;  // пустая строка 
+    int length = text.Length;
+    for (int i = 0; i < length; i++)
+    {
+        if(text[i] == oldValue) result = result + $"{newValue}";
+        else result = result + $"{text[i]}";
+    }
+    return result;
+}
+string newText=Replase(text, ' ', '|');
+System.Console.WriteLine(newText);
+
+System.Console.WriteLine();
+newText=Replase(newText, 'к', 'К');
+System.Console.WriteLine(newText);
+
+System.Console.WriteLine();
+newText=Replase(newText, 'С', 'с');
+System.Console.WriteLine(newText);
+*/
+
+int[] arr = {1, 5, 4, 3, 2, 6, 7, 1, 1 };
+
+void PrintArray(int[] array)
+{
+    int count = array.Length;
+
+    for (int i = 0; i < count; i++)
+    {
+        System.Console.Write($"{array[i]} ");
+    }
+    System.Console.WriteLine();
+}
+void SelectionSort(int[] array)
+{
+    for (int i = 0; i < array.Length - 1; i++)// array.Length "-1" вводится искуственно
+    {
+        int minPosition = i; //1// 
+        
+        for (int j = i+1; j < array.Length; j++)//3
+        {
+            if(array[j] < array[minPosition]) minPosition = j;
+        }
+        int temporary = array[i];//2
+        array[i] = array[minPosition];
+        array[minPosition] = temporary;
+    }
 }
 
+PrintArray(arr);//выводим массив
+SelectionSort(arr);
 
+PrintArray(arr);
